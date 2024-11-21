@@ -1,9 +1,9 @@
-require("dotenv").config();
-const app = require("./app");
-const PORT = process.env.PORT || 5000;
+const { sequelize } = require('./models');
 
-async function init() {
-  app.listen(PORT, () => console.log(`Server listening on ${PORT}`));
-}
-
-init();
+sequelize.sync({ force: true })
+  .then(() => {
+    console.log('Database synced successfully');
+  })
+  .catch((err) => {
+    console.error('Error syncing database:', err);
+  });
