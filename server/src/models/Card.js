@@ -1,21 +1,24 @@
+// server/src/models/Card.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../db/config');
 
-const User = sequelize.define('User', {
-  username: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
-  },
-  password: {
+const Card = sequelize.define('Card', {
+  name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  email: {
+  description: {
     type: DataTypes.STRING,
+    allowNull: true,
+  },
+  attack: {
+    type: DataTypes.INTEGER,
     allowNull: false,
-    unique: true,
+  },
+  defense: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
   },
 });
 
-module.exports = User;
+module.exports = Card;
